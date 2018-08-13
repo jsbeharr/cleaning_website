@@ -10,7 +10,11 @@ class App extends Component {
 					<p id='hire-button'>Hire Us</p>
 				</header>
 				<div className='content'>
-					<p>Content</p>
+					<div className='banner'>
+						<p className='banner-tagline'>
+							Cleaning Businesses throughout Metro Detroit
+						</p>
+					</div>
 				</div>
 			</div>
 		);

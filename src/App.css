@@ -3,6 +3,7 @@
   padding: .05em;
   color: #FFFFFF;
   display: block;
+  border: 1px solid #3e464c;
 }
 
 .App-header p {
@@ -25,4 +26,26 @@
 
 #hire-button:active {
   background: black;
+}
+
+.content {
+  display: block;
+}
+
+.content .banner {
+  display: flex;
+  background-image: url('assets/banner_img.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 600px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner .banner-tagline {
+  margin: 2em;
+  font-size: 2em;
+  color: #FFFFFF;
 }
