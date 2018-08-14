@@ -11,9 +11,13 @@ class App extends Component {
 				</header>
 				<div className='content'>
 					<div className='banner'>
-						<p className='banner-tagline'>
+						<div className='banner-tagline'>
+							<p>
 							Cleaning Businesses throughout Metro Detroit
-						</p>
+							</p>
+							<p>Give Us a Call!</p>
+							<p id='contact'>Contact</p>
+						</div>
 					</div>
 				</div>
 			</div>
