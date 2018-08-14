@@ -7,12 +7,12 @@
   display: inline-block;
   padding: .5em;
   margin: .5em;
-  font-size: 1.2em;
+  font-size: 1.6em;
 }
 
 #hire-button {
   float: right;
-  border: 1px solid #000000;
+  border: 2px solid #000000;
   border-radius: .5em;
   user-select: none;
 }
@@ -20,16 +20,16 @@
 #hire-button:hover {
   color: #000000;
   background: #FFFFFF;
-  border: solid 1px #000000;
+  border: solid 2px #000000;
 }
 
 #hire-button:active {
   color: #FFFFFF;
-  background: black;
-  border: solid 1px #000000;
+  background: #000000;
+  border: solid 2px #000000;
 }
 
-.content {
+.banner {
   display: block;
   background-image: url('assets/banner_img.jpg');
   background-repeat: no-repeat;
@@ -37,7 +37,7 @@
   background-position: center center;
 }
 
-.content .banner {
+.banner .banner-content {
   display: flex;
   height: 600px;
   width: 100%;
@@ -45,7 +45,7 @@
   justify-content: center;
 }
 
-.banner .banner-tagline {
+.banner-content .banner-tagline {
   margin: 16px;
   text-align: center;
   font-size: 2.5em;
@@ -69,6 +69,6 @@
 
 #contact:active {
   color: #FFFFFF;
-  background: black;
+  background: #000000;
   border: solid 4px #000000;
 }

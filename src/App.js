@@ -6,12 +6,12 @@ class App extends Component {
 	render() {
 		return (
 			<div className='App'>
-				<div className='content'>
+				<div className='banner'>
 					<header className='App-header'>
 						<p id='title'>Beharry Cleaning</p>
 						<p id='hire-button'>Hire Us</p>
 					</header>
-					<div className='banner'>
+					<div className='banner-content'>
 						<div className='banner-tagline'>
 							<p>
 							Cleaning Businesses throughout Metro Detroit
