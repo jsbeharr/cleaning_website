@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Form from './Form/Form';
 import './App.css';
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
 							<p id='contact'>Contact</p>
 						</div>
 					</div>
+					<Form />
 				</div>
 			</div>
 		);
