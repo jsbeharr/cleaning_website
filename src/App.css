@@ -1,9 +1,6 @@
 .App-header {
-  background-color: #3e464c;
   padding: .05em;
-  color: #FFFFFF;
   display: block;
-  border: 1px solid #3e464c;
 }
 
 .App-header p {
@@ -15,29 +12,33 @@
 
 #hire-button {
   float: right;
-  border: 1px solid white;
+  border: 1px solid #000000;
   border-radius: .5em;
   user-select: none;
 }
 
 #hire-button:hover {
-  background: grey;
+  color: #000000;
+  background: #FFFFFF;
+  border: solid 1px #000000;
 }
 
 #hire-button:active {
+  color: #FFFFFF;
   background: black;
+  border: solid 1px #000000;
 }
 
 .content {
   display: block;
-}
-
-.content .banner {
-  display: flex;
   background-image: url('assets/banner_img.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+}
+
+.content .banner {
+  display: flex;
   height: 600px;
   width: 100%;
   align-items: center;

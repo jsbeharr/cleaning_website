@@ -6,11 +6,11 @@ class App extends Component {
 	render() {
 		return (
 			<div className='App'>
-				<header className='App-header'>
-					<p id='title'>Beharry Cleaning</p>
-					<p id='hire-button'>Hire Us</p>
-				</header>
 				<div className='content'>
+					<header className='App-header'>
+						<p id='title'>Beharry Cleaning</p>
+						<p id='hire-button'>Hire Us</p>
+					</header>
 					<div className='banner'>
 						<div className='banner-tagline'>
 							<p>
@@ -20,8 +20,8 @@ class App extends Component {
 							<p id='contact'>Contact</p>
 						</div>
 					</div>
-					<Form />
 				</div>
+				<Form />
 			</div>
 		);
 	}}
