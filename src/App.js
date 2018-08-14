@@ -7,7 +7,7 @@ class App extends Component {
 		return (
 			<div className='App'>
 				<div className='banner'>
-					<header className='App-header'>
+					<header className='banner-header'>
 						<p id='title'>Beharry Cleaning</p>
 						<p id='hire-button'>Hire Us</p>
 					</header>

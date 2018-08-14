@@ -1,9 +1,9 @@
-.App-header {
+.banner-header {
   padding: .05em;
   display: block;
 }
 
-.App-header p {
+.banner-header p {
   display: inline-block;
   padding: .5em;
   margin: .5em;
@@ -45,7 +45,7 @@
 
 .banner .banner-content {
   display: flex;
-  height: 600px;
+  height: 635px;
   width: 100%;
   align-items: center;
   justify-content: center;
