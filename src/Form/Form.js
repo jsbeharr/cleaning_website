@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import InputMask from 'react-input-mask';
-import './Form.css';
 import { 
 	withStyles, 
 	MuiThemeProvider,
