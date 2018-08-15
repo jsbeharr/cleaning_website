@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MaskedInput from 'react-text-mask';
+import InputMask from 'react-input-mask';
 import './Form.css';
 import { 
 	withStyles, 
@@ -35,24 +35,6 @@ const theme = createMuiTheme({
 	}
 });
 
-const PhoneMask = (props) => {
-	const { inputRef, ...other } = props;
-	return (
-		<MaskedInput
-			{...other}
-			ref={inputRef}
-			mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
-			placeholderChar={'\u2000'}
-			placeholder="Phone"
-			guide
-		/>
-	);
-};
-
-PhoneMask.propTypes = {
-	inputRef: PropTypes.func.isRequired,
-};
-
 const form = (props) => {
 
 	const {classes} = props;
@@ -79,16 +61,19 @@ const form = (props) => {
 							label="Last Name"
 							margin="normal"
 						/>
-						<TextField
-							required
-							className={classes.textField}
-							id='phone'
-							name='phone'
-							margin="normal"
-							InputProps={{
-								inputComponent: PhoneMask
-							}}
-						/>
+						<InputMask
+							mask='(999) 999-9999'
+							maskChar=" "
+						>
+							{() => <TextField
+								required
+								className={classes.textField}
+								id='phone'
+								name='phone'
+								margin="normal"
+								label='Phone'
+							/>}
+						</InputMask>
 						<TextField
 							required
 							id="address1"
