@@ -8,22 +8,26 @@ class App extends Component {
 			<div className='App'>
 				<div className='banner'>
 					<header className='banner-header'>
-						<p id='title'>Beharry Cleaning</p>
+						<p id='title'>Excellent Cleaning Service</p>
 						<p id='hire-button'>Hire Us</p>
 					</header>
 					<div className='banner-content'>
 						<div className='banner-tagline'>
 							<p>
-							Cleaning Businesses throughout Metro Detroit
+								Cleaning Businesses throughout Metro Detroit
 							</p>
 							<p>Give Us a Call!</p>
-							<p id='contact'>Contact</p>
+							<div className='contact'>
+								<p>(734)502-9574</p>
+								<p>excellentcleaningservicemichigan@gmail.com</p>
+							</div>
 						</div>
 					</div>
 				</div>
 				<Form />
 			</div>
 		);
-	}}
+	}
+}
 
 export default App;
