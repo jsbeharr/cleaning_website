@@ -14,7 +14,7 @@ class App extends Component {
 							onClick={
 								() => {
 									window.scrollTo({
-										top: document.querySelector('.form').scrollHeight,
+										top: document.querySelector('.MuiPaper-root-4').scrollHeight,
 										behavior: 'smooth'
 									});
 								}

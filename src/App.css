@@ -39,11 +39,11 @@
 }
 
 .banner {
-  display: block;
   background-image: url('assets/banner_img.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  height: 100vh;
 }
 
 .banner .banner-content {
