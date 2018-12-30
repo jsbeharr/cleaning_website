@@ -62,22 +62,9 @@
 }
 
 .banner .contact {
-  user-select: none;
   font-size: .75em;
   display: inline-block;
   border: solid 4px #FFFFFF;
   margin-top: 1.2em;
   padding: 4px 40px;
-}
-
-.contact:hover {
-  color: #000000;
-  background: #FFFFFF;
-  border: solid 4px #000000;
-}
-
-.contact:active {
-  color: #FFFFFF;
-  background: #000000;
-  border: solid 4px #000000;
 }

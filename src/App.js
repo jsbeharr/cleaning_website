@@ -9,13 +9,26 @@ class App extends Component {
 				<div className='banner'>
 					<header className='banner-header'>
 						<p id='title'>Excellent Cleaning Service</p>
-						<p id='hire-button'>Hire Us</p>
+						<p
+							id='hire-button'
+							onClick={
+								() => {
+									window.scrollTo({
+										top: document.querySelector('.form').scrollHeight,
+										behavior: 'smooth'
+									});
+								}
+							}
+						>
+							Hire Us
+						</p>
 					</header>
 					<div className='banner-content'>
 						<div className='banner-tagline'>
 							<p>
 								Cleaning Businesses throughout Metro Detroit
 							</p>
+							<p>Have Any Questions?</p>
 							<p>Give Us a Call!</p>
 							<div className='contact'>
 								<p>(734)502-9574</p>
@@ -24,8 +37,10 @@ class App extends Component {
 						</div>
 					</div>
 				</div>
-				<Form />
-			</div>
+				<div className='form'>
+					<Form />
+				</div>
+			</div >
 		);
 	}
 }
