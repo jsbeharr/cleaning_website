@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import InputMask from 'react-input-mask';
-import { 
-	withStyles, 
+import {
+	withStyles,
 	MuiThemeProvider,
-	createMuiTheme 
+	createMuiTheme
 } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
@@ -36,7 +36,7 @@ const theme = createMuiTheme({
 
 const form = (props) => {
 
-	const {classes} = props;
+	const { classes } = props;
 
 	return (
 		<div className='Form'>
@@ -47,17 +47,9 @@ const form = (props) => {
 						<TextField
 							required
 							className={classes.textField}
-							id='firstname'
-							name='firstname'
-							label="First Name"
-							margin="normal"
-						/>
-						<TextField
-							required
-							className={classes.textField}
-							id='lastname'
-							name='lastname'
-							label="Last Name"
+							id='companyname'
+							name='companyname'
+							label="Company Name"
 							margin="normal"
 						/>
 						<InputMask
@@ -82,7 +74,7 @@ const form = (props) => {
 							autoComplete="billing address-line1"
 							helperText="Address of Location to be cleaned"
 						/>
-						
+
 						<TextField
 							id="address2"
 							name="address2"
@@ -119,7 +111,7 @@ const form = (props) => {
 							autoComplete="billing postal-code"
 						/>
 						<Button variant="contained" color="primary" className={classes.button}>
-						Submit
+							Submit
 						</Button>
 					</form>
 				</MuiThemeProvider>
