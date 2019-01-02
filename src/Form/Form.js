@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import InputMask from 'react-input-mask';
 import {
@@ -10,6 +10,12 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import blue from '@material-ui/core/colors/blue';
+
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 const styles = theme => ({
 	textField: {
@@ -36,7 +42,17 @@ const theme = createMuiTheme({
 
 const form = (props) => {
 
+	const [open, setOpen] = useState(false);
+
 	const { classes } = props;
+
+	const handleClickOpen = () => {
+		setOpen(true);
+	};
+
+	const handleClose = () => {
+		setOpen(false);
+	};
 
 	return (
 		<div className='Form'>
@@ -110,9 +126,34 @@ const form = (props) => {
 							margin="normal"
 							autoComplete="billing postal-code"
 						/>
-						<Button variant="contained" color="primary" className={classes.button}>
+						<Button
+							variant="contained"
+							color="primary"
+							className={classes.button}
+							onClick={handleClickOpen}>
 							Submit
 						</Button>
+						<Dialog
+							open={open}
+							onClose={handleClose}
+							aria-labelledby="alert-dialog-title"
+							aria-describedby="alert-dialog-description"
+						>
+							<DialogTitle id="alert-dialog-title">{'Thank You!'}</DialogTitle>
+							<DialogContent>
+								<DialogContentText id="alert-dialog-description">
+									A email will be sent to you in a short minute confirming your
+									interest in hiring us. We will reach out to you in a few days
+									to gain further information. Thank you for hiring us for your
+									cleaning needs and we will be in touch!
+								</DialogContentText>
+							</DialogContent>
+							<DialogActions>
+								<Button onClick={handleClose} color="primary" autoFocus>
+									Close
+								</Button>
+							</DialogActions>
+						</Dialog>
 					</form>
 				</MuiThemeProvider>
 			</Paper>
