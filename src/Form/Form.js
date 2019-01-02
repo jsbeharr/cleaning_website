@@ -57,17 +57,43 @@ class Form extends React.Component {
 
 	}
 
-	handleClickOpen = () => {
-		this.setState({
-			open: true
-		});
-	};
+	// On Input Fields update the state 
+	// depending on the input field
+	handleInputChange = event => {
+		const name = event.target.name;
+		const value = event.target.value;
 
+		this.setState({
+			[name]: value
+		});
+	}
+
+	// Opens a confirmation dialog box
+	// on form submission
+	handleClickOpen = () => {
+		const curr_state = this.state;
+		const companyname = curr_state.companyname;
+		const phone = curr_state.phone;
+		const address1 = curr_state.address1;
+		const city = curr_state.city;
+		const zip = curr_state.zip;
+
+		// Checks all required variables are filled
+		if (companyname !== '' && phone !== '' &&
+			address1 !== '' && city !== '' && zip !== '') {
+			this.setState({
+				open: true
+			});
+		}
+	}
+
+	// Closes the confirmation dialog box
+	// on the close button
 	handleClose = () => {
 		this.setState({
 			open: false
 		});
-	};
+	}
 
 	render() {
 
@@ -86,10 +112,12 @@ class Form extends React.Component {
 								name='companyname'
 								label="Company Name"
 								margin="normal"
+								onChange={this.handleInputChange}
 							/>
 							<InputMask
 								mask='(999) 999-9999'
 								maskChar=" "
+								onChange={this.handleInputChange}
 							>
 								{() => <TextField
 									required
@@ -108,6 +136,7 @@ class Form extends React.Component {
 								fullWidth
 								autoComplete="billing address-line1"
 								helperText="Address of Location to be cleaned"
+								onChange={this.handleInputChange}
 							/>
 
 							<TextField
@@ -116,6 +145,7 @@ class Form extends React.Component {
 								label="Address line 2"
 								fullWidth
 								autoComplete="billing address-line2"
+								onChange={this.handleInputChange}
 							/>
 							<TextField
 								required
@@ -125,6 +155,7 @@ class Form extends React.Component {
 								label="City"
 								margin="normal"
 								autoComplete="billing address-level2"
+								onChange={this.handleInputChange}
 							/>
 							<TextField
 								required
@@ -144,6 +175,7 @@ class Form extends React.Component {
 								label="Zip / Postal code"
 								margin="normal"
 								autoComplete="billing postal-code"
+								onChange={this.handleInputChange}
 							/>
 							<Button
 								variant="contained"
