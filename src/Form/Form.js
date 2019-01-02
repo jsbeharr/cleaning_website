@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import InputMask from 'react-input-mask';
 import {
@@ -40,129 +40,149 @@ const theme = createMuiTheme({
 	}
 });
 
-const form = (props) => {
+class Form extends React.Component {
 
-	const [open, setOpen] = useState(false);
+	constructor(props) {
+		super(props);
 
-	const { classes } = props;
+		this.state = {
+			companyname: '',
+			phone: '',
+			address1: '',
+			address2: '',
+			city: '',
+			zip: '',
+			open: false,
+		};
 
-	const handleClickOpen = () => {
-		setOpen(true);
+	}
+
+	handleClickOpen = () => {
+		this.setState({
+			open: true
+		});
 	};
 
-	const handleClose = () => {
-		setOpen(false);
+	handleClose = () => {
+		this.setState({
+			open: false
+		});
 	};
 
-	return (
-		<div className='Form'>
-			<Paper className={classes.paper} elevation={8}>
-				<MuiThemeProvider theme={theme}>
-					<form>
-						<p>Fill out form if interested in hiring</p>
-						<TextField
-							required
-							className={classes.textField}
-							id='companyname'
-							name='companyname'
-							label="Company Name"
-							margin="normal"
-						/>
-						<InputMask
-							mask='(999) 999-9999'
-							maskChar=" "
-						>
-							{() => <TextField
+	render() {
+
+		const { classes } = this.props;
+
+		return (
+			<div className='Form'>
+				<Paper className={classes.paper} elevation={8}>
+					<MuiThemeProvider theme={theme}>
+						<form>
+							<p>Fill out form if interested in hiring</p>
+							<TextField
 								required
 								className={classes.textField}
-								id='phone'
-								name='phone'
+								id='companyname'
+								name='companyname'
+								label="Company Name"
 								margin="normal"
-								label='Phone'
-							/>}
-						</InputMask>
-						<TextField
-							required
-							id="address1"
-							name="address1"
-							label="Address line 1"
-							fullWidth
-							autoComplete="billing address-line1"
-							helperText="Address of Location to be cleaned"
-						/>
+							/>
+							<InputMask
+								mask='(999) 999-9999'
+								maskChar=" "
+							>
+								{() => <TextField
+									required
+									className={classes.textField}
+									id='phone'
+									name='phone'
+									margin="normal"
+									label='Phone'
+								/>}
+							</InputMask>
+							<TextField
+								required
+								id="address1"
+								name="address1"
+								label="Address line 1"
+								fullWidth
+								autoComplete="billing address-line1"
+								helperText="Address of Location to be cleaned"
+							/>
 
-						<TextField
-							id="address2"
-							name="address2"
-							label="Address line 2"
-							fullWidth
-							autoComplete="billing address-line2"
-						/>
-						<TextField
-							required
-							className={classes.textField}
-							id="city"
-							name="city"
-							label="City"
-							margin="normal"
-							autoComplete="billing address-level2"
-						/>
-						<TextField
-							required
-							disabled
-							className={classes.textField}
-							id="state"
-							name="state"
-							label="State"
-							margin="normal"
-							value="Michigan"
-						/>
-						<TextField
-							required
-							className={classes.textField}
-							id="zip"
-							name="zip"
-							label="Zip / Postal code"
-							margin="normal"
-							autoComplete="billing postal-code"
-						/>
-						<Button
-							variant="contained"
-							color="primary"
-							className={classes.button}
-							onClick={handleClickOpen}>
-							Submit
-						</Button>
-						<Dialog
-							open={open}
-							onClose={handleClose}
-							aria-labelledby="alert-dialog-title"
-							aria-describedby="alert-dialog-description"
-						>
-							<DialogTitle id="alert-dialog-title">{'Thank You!'}</DialogTitle>
-							<DialogContent>
-								<DialogContentText id="alert-dialog-description">
-									A email will be sent to you in a short minute confirming your
-									interest in hiring us. We will reach out to you in a few days
-									to gain further information. Thank you for hiring us for your
-									cleaning needs and we will be in touch!
-								</DialogContentText>
-							</DialogContent>
-							<DialogActions>
-								<Button onClick={handleClose} color="primary" autoFocus>
-									Close
-								</Button>
-							</DialogActions>
-						</Dialog>
-					</form>
-				</MuiThemeProvider>
-			</Paper>
-		</div>
-	);
-};
+							<TextField
+								id="address2"
+								name="address2"
+								label="Address line 2"
+								fullWidth
+								autoComplete="billing address-line2"
+							/>
+							<TextField
+								required
+								className={classes.textField}
+								id="city"
+								name="city"
+								label="City"
+								margin="normal"
+								autoComplete="billing address-level2"
+							/>
+							<TextField
+								required
+								disabled
+								className={classes.textField}
+								id="state"
+								name="state"
+								label="State"
+								margin="normal"
+								value="Michigan"
+							/>
+							<TextField
+								required
+								className={classes.textField}
+								id="zip"
+								name="zip"
+								label="Zip / Postal code"
+								margin="normal"
+								autoComplete="billing postal-code"
+							/>
+							<Button
+								variant="contained"
+								color="primary"
+								className={classes.button}
+								onClick={this.handleClickOpen}>
+								Submit
+							</Button>
+							<Dialog
+								open={this.state.open}
+								onClose={this.handleClose}
+								aria-labelledby="alert-dialog-title"
+								aria-describedby="alert-dialog-description"
+							>
+								<DialogTitle id="alert-dialog-title">{'Thank You!'}</DialogTitle>
+								<DialogContent>
+									<DialogContentText id="alert-dialog-description">
+										A email will be sent to you in a short minute confirming your
+										interest in hiring us. We will reach out to you in a few days
+										to gain further information. Thank you for hiring us for your
+										cleaning needs and we will be in touch!
+									</DialogContentText>
+								</DialogContent>
+								<DialogActions>
+									<Button onClick={this.handleClose} color="primary" autoFocus>
+										Close
+									</Button>
+								</DialogActions>
+							</Dialog>
+						</form>
+					</MuiThemeProvider>
+				</Paper>
+			</div>
+		);
+	}
+}
 
-form.propTypes = {
+Form.propTypes = {
 	classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(form);
+export default withStyles(styles)(Form);
