@@ -47,6 +47,7 @@ class Form extends React.Component {
 
 		this.state = {
 			companyname: '',
+			email: '',
 			phone: '',
 			address1: '',
 			address2: '',
@@ -113,11 +114,13 @@ class Form extends React.Component {
 								label="Company Name"
 								margin="normal"
 								onChange={this.handleInputChange}
+								value={this.state.companyname}
 							/>
 							<InputMask
-								mask='(999) 999-9999'
+								mask='(999)999-9999'
 								maskChar=" "
 								onChange={this.handleInputChange}
+								value={this.state.phone}
 							>
 								{() => <TextField
 									required
@@ -130,6 +133,16 @@ class Form extends React.Component {
 							</InputMask>
 							<TextField
 								required
+								className={classes.textField}
+								id='email'
+								name='email'
+								margin="normal"
+								label='Email'
+								onChange={this.handleInputChange}
+								value={this.state.email}
+							/>
+							<TextField
+								required
 								id="address1"
 								name="address1"
 								label="Address line 1"
@@ -137,6 +150,7 @@ class Form extends React.Component {
 								autoComplete="billing address-line1"
 								helperText="Address of Location to be cleaned"
 								onChange={this.handleInputChange}
+								value={this.state.address1}
 							/>
 
 							<TextField
@@ -146,6 +160,7 @@ class Form extends React.Component {
 								fullWidth
 								autoComplete="billing address-line2"
 								onChange={this.handleInputChange}
+								value={this.state.address2}
 							/>
 							<TextField
 								required
@@ -154,8 +169,8 @@ class Form extends React.Component {
 								name="city"
 								label="City"
 								margin="normal"
-								autoComplete="billing address-level2"
 								onChange={this.handleInputChange}
+								value={this.state.city}
 							/>
 							<TextField
 								required
@@ -176,6 +191,7 @@ class Form extends React.Component {
 								margin="normal"
 								autoComplete="billing postal-code"
 								onChange={this.handleInputChange}
+								value={this.state.zip}
 							/>
 							<Button
 								variant="contained"
@@ -193,9 +209,9 @@ class Form extends React.Component {
 								<DialogTitle id="alert-dialog-title">{'Thank You!'}</DialogTitle>
 								<DialogContent>
 									<DialogContentText id="alert-dialog-description">
-										A email will be sent to you in a short minute confirming your
-										interest in hiring us. We will reach out to you in a few days
-										to gain further information. Thank you for hiring us for your
+										A email will be sent to {this.state.email} in a short minute confirming your
+										interest in hiring us. We will reach out to you in a few days at the cell
+										you provided at {this.state.phone} to gain further information. Thank you for hiring us for your
 										cleaning needs and we will be in touch!
 									</DialogContentText>
 								</DialogContent>
