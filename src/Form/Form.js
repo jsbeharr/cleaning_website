@@ -71,7 +71,7 @@ class Form extends React.Component {
 
 	// Opens a confirmation dialog box
 	// on form submission
-	handleClickOpen = () => {
+	handleSubmit = () => {
 		const curr_state = this.state;
 		const companyname = curr_state.companyname;
 		const phone = curr_state.phone;
@@ -89,10 +89,17 @@ class Form extends React.Component {
 	}
 
 	// Closes the confirmation dialog box
-	// on the close button
+	// on the close button and clears the form
 	handleClose = () => {
 		this.setState({
-			open: false
+			open: false,
+			companyname: '',
+			email: '',
+			phone: '',
+			address1: '',
+			address2: '',
+			city: '',
+			zip: '',
 		});
 	}
 
@@ -197,7 +204,7 @@ class Form extends React.Component {
 								variant="contained"
 								color="primary"
 								className={classes.button}
-								onClick={this.handleClickOpen}>
+								onClick={this.handleSubmit}>
 								Submit
 							</Button>
 							<Dialog
