@@ -71,7 +71,8 @@ class Form extends React.Component {
 
 	// Opens a confirmation dialog box
 	// on form submission
-	handleSubmit = () => {
+	handleSubmit = event => {
+    event.preventDefault();
 		const curr_state = this.state;
 		const companyname = curr_state.companyname;
     const email = curr_state.email;
@@ -130,7 +131,7 @@ class Form extends React.Component {
       <div className='Form'>
         <Paper className={classes.paper} elevation={8}>
           <MuiThemeProvider theme={theme}>
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <p>Fill out form if interested in hiring</p>
               <TextField
                 required
@@ -223,7 +224,7 @@ class Form extends React.Component {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={this.handleSubmit}>
+              type="submit">
               Submit
             </Button>
             <Dialog
