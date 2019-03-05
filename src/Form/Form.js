@@ -83,7 +83,7 @@ class Form extends React.Component {
 		const zip = curr_state.zip;
 
 		// Checks all required variables are filled
-		if (companyname !== '' && email !== '' && phone !== '' &&
+		if (companyname !== '' && email !== '' && phone[12] !== ' ' &&
 			address1 !== '' && city !== '' && zip !== '') {
 			fetch('/api/addclients', {
 				method: 'POST',
@@ -156,6 +156,7 @@ class Form extends React.Component {
 									name='phone'
 									margin="normal"
 									label='Phone'
+									error={this.state.phone[12] === ' '}
 								/>}
 							</InputMask>
 							<TextField
