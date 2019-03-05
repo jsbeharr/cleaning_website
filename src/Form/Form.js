@@ -73,14 +73,13 @@ class Form extends React.Component {
 	// on form submission
 	handleSubmit = event => {
 		event.preventDefault();
-		const curr_state = this.state;
-		const companyname = curr_state.companyname;
-		const email = curr_state.email;
-		const phone = curr_state.phone;
-		const address1 = curr_state.address1;
-		const address2 = curr_state.address2;
-		const city = curr_state.city;
-		const zip = curr_state.zip;
+		const companyname = this.state.companyname;
+		const email = this.state.email;
+		const phone = this.state.phone;
+		const address1 = this.state.address1;
+		const address2 = this.state.address2;
+		const city = this.state.city;
+		const zip = this.state.zip;
 
 		// Checks all required variables are filled
 		if (companyname !== '' && email !== '' && phone[12] !== ' ' &&
