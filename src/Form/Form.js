@@ -10,7 +10,6 @@ import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import blue from '@material-ui/core/colors/blue';
-
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -72,7 +71,7 @@ class Form extends React.Component {
 	// Opens a confirmation dialog box
 	// on form submission
 	handleSubmit = event => {
-		event.preventDefault();
+		
 		const companyname = this.state.companyname;
 		const email = this.state.email;
 		const phone = this.state.phone;
@@ -130,7 +129,7 @@ class Form extends React.Component {
 			<div className='Form'>
 				<Paper className={classes.paper} elevation={8}>
 					<MuiThemeProvider theme={theme}>
-						<ValidatorForm 
+						<ValidatorForm
 							onSubmit={this.handleSubmit}>
 							<p>Fill out form if interested in hiring</p>
 							<TextValidator
