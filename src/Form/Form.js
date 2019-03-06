@@ -70,7 +70,7 @@ class Form extends React.Component {
 
 	// Opens a confirmation dialog box
 	// on form submission
-	handleSubmit = event => {
+	handleSubmit = () => {
 		
 		const companyname = this.state.companyname;
 		const email = this.state.email;
