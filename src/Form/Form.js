@@ -6,7 +6,7 @@ import {
 	MuiThemeProvider,
 	createMuiTheme
 } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import blue from '@material-ui/core/colors/blue';
@@ -130,14 +130,16 @@ class Form extends React.Component {
 			<div className='Form'>
 				<Paper className={classes.paper} elevation={8}>
 					<MuiThemeProvider theme={theme}>
-						<form onSubmit={this.handleSubmit}>
+						<ValidatorForm 
+							onSubmit={this.handleSubmit}>
 							<p>Fill out form if interested in hiring</p>
-							<TextField
-								required
+							<TextValidator
 								className={classes.textField}
 								id='companyname'
 								name='companyname'
 								label="Company Name"
+								validators={['required']}
+								errorMessages={['this field is required']}
 								margin="normal"
 								onChange={this.handleInputChange}
 								value={this.state.companyname}
@@ -148,39 +150,41 @@ class Form extends React.Component {
 								onChange={this.handleInputChange}
 								value={this.state.phone}
 							>
-								{() => <TextField
-									required
+								{() => <TextValidator
 									className={classes.textField}
 									id='phone'
 									name='phone'
 									margin="normal"
 									label='Phone'
-									error={this.state.phone[12] === ' '}
+									validators={['required', 'matchRegexp:[0-9]{4}']}
+									errorMessages={['this field is required', 'invalid phone number']}
 								/>}
 							</InputMask>
-							<TextField
-								required
+							<TextValidator
 								className={classes.textField}
 								id='email'
 								name='email'
 								margin="normal"
 								label='Email'
+								validators={['required', 'isEmail']}
+								errorMessages={['this field is required', 'email is not valid']}
 								onChange={this.handleInputChange}
 								value={this.state.email}
 							/>
-							<TextField
-								required
+							<TextValidator
 								id="address1"
 								name="address1"
 								label="Address line 1"
 								fullWidth
 								autoComplete="billing address-line1"
 								helperText="Address of Location to be cleaned"
+								validators={['required']}
+								errorMessages={['this field is required']}
 								onChange={this.handleInputChange}
 								value={this.state.address1}
 							/>
 
-							<TextField
+							<TextValidator
 								id="address2"
 								name="address2"
 								label="Address line 2"
@@ -189,18 +193,18 @@ class Form extends React.Component {
 								onChange={this.handleInputChange}
 								value={this.state.address2}
 							/>
-							<TextField
-								required
+							<TextValidator
 								className={classes.textField}
 								id="city"
 								name="city"
 								label="City"
 								margin="normal"
+								validators={['required']}
+								errorMessages={['this field is required']}
 								onChange={this.handleInputChange}
 								value={this.state.city}
 							/>
-							<TextField
-								required
+							<TextValidator
 								disabled
 								className={classes.textField}
 								id="state"
@@ -209,14 +213,15 @@ class Form extends React.Component {
 								margin="normal"
 								value="Michigan"
 							/>
-							<TextField
-								required
+							<TextValidator
 								className={classes.textField}
 								id="zip"
 								name="zip"
 								label="Zip / Postal code"
 								margin="normal"
 								autoComplete="billing postal-code"
+								validators={['required', 'isNumber']}
+								errorMessages={['this field is required', 'zipcode not valid']}
 								onChange={this.handleInputChange}
 								value={this.state.zip}
 							/>
@@ -248,7 +253,7 @@ class Form extends React.Component {
 									</Button>
 								</DialogActions>
 							</Dialog>
-						</form>
+						</ValidatorForm>
 					</MuiThemeProvider>
 				</Paper>
 			</div>
