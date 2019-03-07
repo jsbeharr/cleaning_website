@@ -83,7 +83,7 @@ class Form extends React.Component {
 		// Checks all required variables are filled
 		if (companyname !== '' && email !== '' && phone[12] !== ' ' &&
 			address1 !== '' && city !== '' && zip !== '') {
-			fetch('/api/addclients', {
+			fetch('/api/client', {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json',
@@ -96,7 +96,7 @@ class Form extends React.Component {
 					address1: address1,
 					address2: address2,
 					city: city,
-					zip: zip
+					zipcode: zip
 				})
 			});
 

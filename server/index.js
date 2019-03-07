@@ -1,33 +1,26 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const pino = require('express-pino-logger')();
+let express = require('express');
+let app = express();
+let clientRoute = require('./client');
+let bodyParser = require('body-parser');
 
-const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(pino);
 app.use(bodyParser.json());
 
-app.get('/api/greeting', (req, res) => {
-	const name = req.query.name || 'World';
-	res.setHeader('Content-Type', 'application/json');
-	res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
+app.use((req, res, next) => {
+	console.log(`${new Date().toString()} => ${req.originalUrl}`, req.body);
+	next();
 });
 
-app.post('/api/addclients', (req, res) => {
-	let client = {
-		company: req.body.company,
-		email: req.body.email,
-		phone: req.body.phone,
-		address1: req.body.address1,
-		address2: req.body.address2,
-		city: req.body.city,
-		zipcode: req.body.zip
-	};
+app.use(clientRoute);
+app.use(express.static('public'));
 
-	console.log(client);
-	res.send(client);
+// Handler for 404 - Resource Not Found
+app.use((req, res) => {
+	res.status(404).send('We think you are lost!');
 });
 
-app.listen(3001, () =>
-	console.log('Express server is running on localhost:3001')
-);
+// Handler for Error 500
+app.use((err, req, res) => {
+	res.status(500).send('Woops look like we really messed up');
+});
+
+app.listen(3001, () => console.info('Server has started on 3001'));
