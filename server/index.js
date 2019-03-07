@@ -1,9 +1,11 @@
-let express = require('express');
-let app = express();
-let clientRoute = require('./client');
-let bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const clientRoute = require('./client');
+const bodyParser = require('body-parser');
+const pino = require('express-pino-logger')();
 
 app.use(bodyParser.json());
+app.use(pino);
 
 app.use((req, res, next) => {
 	console.log(`${new Date().toString()} => ${req.originalUrl}`, req.body);
