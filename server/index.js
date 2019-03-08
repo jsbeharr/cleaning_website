@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const clientRoute = require('./client');
+const clientRoute = require('./route');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 
@@ -12,7 +12,7 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use(clientRoute);
+app.use('/api', clientRoute);
 app.use(express.static('public'));
 
 // Handler for 404 - Resource Not Found

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/exlclean');
 const Schema = mongoose.Schema;
 
-const ClientModel = new Schema({
+const ClientSchema = new Schema({
 	company: {type: String, required: true},
 	email: {type: String, required: true},
 	phone: {type: String, required: true},
@@ -14,4 +14,4 @@ const ClientModel = new Schema({
 });
 
 // eslint-disable-next-line no-undef
-module.exports = mongoose.model('clients', ClientModel);
+module.exports = mongoose.model('clients', ClientSchema);
