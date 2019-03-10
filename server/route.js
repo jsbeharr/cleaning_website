@@ -1,6 +1,6 @@
-const ClientModel = require('./models/client');
-const UserModel = require('./models/user');
-const express = require('express');
+import ClientModel from './models/client';
+import UserModel from './models/user';
+import express from 'express';
 const router = express.Router();
 
 // Create a new customer
@@ -75,5 +75,4 @@ router.post('/register', (req, res) => {
 		});
 });
 
-// eslint-disable-next-line no-undef
-module.exports = router;
+export default router;

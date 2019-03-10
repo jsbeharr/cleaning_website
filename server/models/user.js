@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 mongoose.connect('mongodb://localhost:27017/exlclean');
 const Schema = mongoose.Schema;
 
@@ -50,5 +50,4 @@ UserSchema.pre('save', function (next) {
 });
 
 const User = mongoose.model('user', UserSchema);
-// eslint-disable-next-line no-undef
-module.exports = User;
+export default User;
