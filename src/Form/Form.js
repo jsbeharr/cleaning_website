@@ -98,170 +98,174 @@ class Form extends React.Component {
 					city: city,
 					zipcode: zip
 				})
-			});
+      })
+        .then(res => {
+          if(!res.ok) {
+            throw res.statusText;
+          }  
+          return res;
+        })
+        .then(res => this.setState({open:true}))
+        .catch(error => alert(error));
+    }
+  }
 
-			this.setState({
-				open: true
-			});
-		}
-	}
+  // Closes the confirmation dialog box
+  // on the close button and clears the form
+  handleClose = () => {
+    this.setState({
+      open: false,
+      companyname: '',
+      email: '',
+      phone: '',
+      address1: '',
+      address2: '',
+      city: '',
+      zip: '',
+    });
+  }
 
-	// Closes the confirmation dialog box
-	// on the close button and clears the form
-	handleClose = () => {
-		this.setState({
-			open: false,
-			companyname: '',
-			email: '',
-			phone: '',
-			address1: '',
-			address2: '',
-			city: '',
-			zip: '',
-		});
-	}
+  render() {
 
-	render() {
+    const { classes } = this.props;
 
-		const { classes } = this.props;
+    return (
+      <div className='Form'>
+        <Paper className={classes.paper} elevation={8}>
+          <MuiThemeProvider theme={theme}>
+            <ValidatorForm
+              onSubmit={this.handleSubmit}>
+              <p>Fill out form if interested in hiring</p>
+              <TextValidator
+                className={classes.textField}
+                id='companyname'
+                name='companyname'
+                label="Company Name"
+                validators={['required']}
+                errorMessages={['this field is required']}
+                margin="normal"
+                onChange={this.handleInputChange}
+                value={this.state.companyname}
+              />
+              <InputMask
+                mask='(999)999-9999'
+                maskChar=" "
+                onChange={this.handleInputChange}
+                value={this.state.phone}
+              >
+                {() => <TextValidator
+                  className={classes.textField}
+                  id='phone'
+                  name='phone'
+                  margin="normal"
+                  label='Phone'
+                  validators={['required', 'matchRegexp:[0-9]{4}']}
+                  errorMessages={['this field is required', 'invalid phone number']}
+                />}
+              </InputMask>
+              <TextValidator
+                className={classes.textField}
+                id='email'
+                name='email'
+                margin="normal"
+                label='Email'
+                validators={['required', 'isEmail']}
+                errorMessages={['this field is required', 'email is not valid']}
+                onChange={this.handleInputChange}
+                value={this.state.email}
+              />
+              <TextValidator
+                id="address1"
+                name="address1"
+                label="Address line 1"
+                fullWidth
+                autoComplete="billing address-line1"
+                helperText="Address of Location to be cleaned"
+                validators={['required']}
+                errorMessages={['this field is required']}
+                onChange={this.handleInputChange}
+                value={this.state.address1}
+              />
 
-		return (
-			<div className='Form'>
-				<Paper className={classes.paper} elevation={8}>
-					<MuiThemeProvider theme={theme}>
-						<ValidatorForm
-							onSubmit={this.handleSubmit}>
-							<p>Fill out form if interested in hiring</p>
-							<TextValidator
-								className={classes.textField}
-								id='companyname'
-								name='companyname'
-								label="Company Name"
-								validators={['required']}
-								errorMessages={['this field is required']}
-								margin="normal"
-								onChange={this.handleInputChange}
-								value={this.state.companyname}
-							/>
-							<InputMask
-								mask='(999)999-9999'
-								maskChar=" "
-								onChange={this.handleInputChange}
-								value={this.state.phone}
-							>
-								{() => <TextValidator
-									className={classes.textField}
-									id='phone'
-									name='phone'
-									margin="normal"
-									label='Phone'
-									validators={['required', 'matchRegexp:[0-9]{4}']}
-									errorMessages={['this field is required', 'invalid phone number']}
-								/>}
-							</InputMask>
-							<TextValidator
-								className={classes.textField}
-								id='email'
-								name='email'
-								margin="normal"
-								label='Email'
-								validators={['required', 'isEmail']}
-								errorMessages={['this field is required', 'email is not valid']}
-								onChange={this.handleInputChange}
-								value={this.state.email}
-							/>
-							<TextValidator
-								id="address1"
-								name="address1"
-								label="Address line 1"
-								fullWidth
-								autoComplete="billing address-line1"
-								helperText="Address of Location to be cleaned"
-								validators={['required']}
-								errorMessages={['this field is required']}
-								onChange={this.handleInputChange}
-								value={this.state.address1}
-							/>
-
-							<TextValidator
-								id="address2"
-								name="address2"
-								label="Address line 2"
-								fullWidth
-								autoComplete="billing address-line2"
-								onChange={this.handleInputChange}
-								value={this.state.address2}
-							/>
-							<TextValidator
-								className={classes.textField}
-								id="city"
-								name="city"
-								label="City"
-								margin="normal"
-								validators={['required']}
-								errorMessages={['this field is required']}
-								onChange={this.handleInputChange}
-								value={this.state.city}
-							/>
-							<TextValidator
-								disabled
-								className={classes.textField}
-								id="state"
-								name="state"
-								label="State"
-								margin="normal"
-								value="Michigan"
-							/>
-							<TextValidator
-								className={classes.textField}
-								id="zip"
-								name="zip"
-								label="Zip / Postal code"
-								margin="normal"
-								autoComplete="billing postal-code"
-								validators={['required', 'isNumber']}
-								errorMessages={['this field is required', 'zipcode not valid']}
-								onChange={this.handleInputChange}
-								value={this.state.zip}
-							/>
-							<Button
-								variant="contained"
-								color="primary"
-								className={classes.button}
-								type="submit">
-							Submit
-							</Button>
-							<Dialog
-								open={this.state.open}
-								onClose={this.handleClose}
-								aria-labelledby="alert-dialog-title"
-								aria-describedby="alert-dialog-description"
-							>
-								<DialogTitle id="alert-dialog-title">{'Thank You!'}</DialogTitle>
-								<DialogContent>
-									<DialogContentText id="alert-dialog-description">
-									A email will be sent to {this.state.email} in a short minute confirming your
-									interest in hiring us. We will reach out to you in a few days at the cell
-									you provided at {this.state.phone} to gain further information. Thank you for hiring us for your
-									cleaning needs and we will be in touch!
-									</DialogContentText>
-								</DialogContent>
-								<DialogActions>
-									<Button onClick={this.handleClose} color="primary" autoFocus>
-									Close
-									</Button>
-								</DialogActions>
-							</Dialog>
-						</ValidatorForm>
-					</MuiThemeProvider>
-				</Paper>
-			</div>
-		);
-	}
+            <TextValidator
+              id="address2"
+              name="address2"
+              label="Address line 2"
+              fullWidth
+              autoComplete="billing address-line2"
+              onChange={this.handleInputChange}
+              value={this.state.address2}
+            />
+            <TextValidator
+              className={classes.textField}
+              id="city"
+              name="city"
+              label="City"
+              margin="normal"
+              validators={['required']}
+              errorMessages={['this field is required']}
+              onChange={this.handleInputChange}
+              value={this.state.city}
+            />
+            <TextValidator
+              disabled
+              className={classes.textField}
+              id="state"
+              name="state"
+              label="State"
+              margin="normal"
+              value="Michigan"
+            />
+            <TextValidator
+              className={classes.textField}
+              id="zip"
+              name="zip"
+              label="Zip / Postal code"
+              margin="normal"
+              autoComplete="billing postal-code"
+              validators={['required', 'isNumber']}
+              errorMessages={['this field is required', 'zipcode not valid']}
+              onChange={this.handleInputChange}
+              value={this.state.zip}
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              type="submit">
+              Submit
+            </Button>
+            <Dialog
+              open={this.state.open}
+              onClose={this.handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">{'Thank You!'}</DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  A email will be sent to {this.state.email} in a short minute confirming your
+                  interest in hiring us. We will reach out to you in a few days at the cell
+                  you provided at {this.state.phone} to gain further information. Thank you for hiring us for your
+                  cleaning needs and we will be in touch!
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={this.handleClose} color="primary" autoFocus>
+                  Close
+                </Button>
+              </DialogActions>
+            </Dialog>
+          </ValidatorForm>
+        </MuiThemeProvider>
+      </Paper>
+    </div>
+    );
+  }
 }
 
 Form.propTypes = {
-	classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Form);
