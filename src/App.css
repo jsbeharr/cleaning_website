@@ -16,7 +16,7 @@
 }
 
 .banner {
-  background-image: url('assets/banner_img.jpg');
+  background-image: url('./assets/Detergent_02.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -26,6 +26,8 @@
 .banner-header {
   padding: .05em;
   display: block;
+  position: absolute;
+  width: 100%;
 }
 
 .banner-header p {
@@ -63,17 +65,10 @@
 }
 
 @media only screen and (max-width: 500px)   {
-  #title {
+  .banner-header {
     display: none;
   }
   .contact p {
     font-size: .35em
-  }
-}
-
-@media only screen and (min-width: 500px)   {
-  .banner-header {
-    position: absolute;
-    width: 100%;
   }
 }
