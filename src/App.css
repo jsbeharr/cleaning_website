@@ -1,20 +1,18 @@
 #hire-button {
   float: right;
-  border: 2px solid #000000;
   border-radius: .5em;
   user-select: none;
+  background: #2196f3;
 }
 
 #hire-button:hover {
   color: #000000;
   background: #FFFFFF;
-  border: solid 2px #000000;
 }
 
 #hire-button:active {
   color: #FFFFFF;
   background: #000000;
-  border: solid 2px #000000;
 }
 
 .banner {
@@ -35,6 +33,7 @@
   padding: .5em;
   margin: .5em;
   font-size: 1.6em;
+  color: #FFFFFF;
 }
 
 .banner-content {
@@ -50,6 +49,9 @@
   text-align: center;
   font-size: 2.5em;
   color: #FFFFFF;
+  border-radius: 25px;
+  padding: .5em;
+  background: #2196f3;
 }
 
 .contact {
@@ -66,5 +68,12 @@
   }
   .contact p {
     font-size: .35em
+  }
+}
+
+@media only screen and (min-width: 500px)   {
+  .banner-header {
+    position: absolute;
+    width: 100%;
   }
 }
