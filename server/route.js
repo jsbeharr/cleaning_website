@@ -1,6 +1,7 @@
 import ClientModel from './models/client';
 import UserModel from './models/user';
 import express from 'express';
+import User from './models/user';
 const router = express.Router();
 
 // Create a new customer
@@ -45,15 +46,19 @@ router.get('/client', (req, res) => {
 // Get all clients
 // GET
 router.get('/clients', (req, res) => {
-
-	ClientModel.find()
-		.then(doc => {
-			res.json(doc);
-		})
-		.catch(err => {
-			res.status(500).json(err);
-		});
-
+	User.authenticate(req.query.username, req.query.password, (error, user) => {
+		if (error || !user) {
+			return res.status(400).send('Wrong Username or Password');
+		} else {
+			ClientModel.find()
+				.then(doc => {
+					res.json(doc);
+				})
+				.catch(err => {
+					res.status(500).json(err);
+				});
+		}
+	});
 });
 
 //register: storing name, email and password and redirecting to home page after signup

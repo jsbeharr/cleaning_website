@@ -17,24 +17,15 @@ const UserSchema = new Schema({
 });
 
 //authenticate input against database
-UserSchema.statics.authenticate = (username, password, callback) => {
-	User.findOne({ username: username })
-		.exec( (err, user) => {
-			if (err) {
-				return callback(err);
-			} else if (!user) {
-				err = new Error('User not found.');
-				err.status = 401;
-				return callback(err);
-			}
-			bcrypt.compare(password, user.password, (err, result) => {
-				if (result === true) {
-					return callback(null, user);
-				} else {
-					return callback();
-				}
-			});
+UserSchema.statics.authenticate =  (username, password, fn) => {
+	User.findOne({ username: username }, (err, user) => {
+		if (!user) return fn(new Error('cannot find user'));
+		bcrypt.compare(password, user.password, (err, result) => {
+			if (err) return fn(err);
+			if (result) return fn(null, user);
+			fn(new Error('invalid Password'));
 		});
+	});
 };
 
 //hashing a password before saving it to the database
