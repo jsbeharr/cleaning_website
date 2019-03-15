@@ -6,7 +6,7 @@ import {
 	MuiThemeProvider,
 	createMuiTheme
 } from '@material-ui/core/styles';
-import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import blue from '@material-ui/core/colors/blue';
@@ -71,7 +71,7 @@ class Form extends React.Component {
 	// Opens a confirmation dialog box
 	// on form submission
 	handleSubmit = () => {
-		
+
 		const companyname = this.state.companyname;
 		const email = this.state.email;
 		const phone = this.state.phone;
@@ -98,11 +98,15 @@ class Form extends React.Component {
 					city: city,
 					zipcode: zip
 				})
-			});
-
-			this.setState({
-				open: true
-			});
+			})
+				.then(res => {
+					if (!res.ok) {
+						throw res.statusText;
+					}
+					return res;
+				})
+				.then(res => this.setState({ open: true }))
+				.catch(error => alert(error));
 		}
 	}
 
@@ -229,7 +233,7 @@ class Form extends React.Component {
 								color="primary"
 								className={classes.button}
 								type="submit">
-							Submit
+								Submit
 							</Button>
 							<Dialog
 								open={this.state.open}
@@ -240,15 +244,15 @@ class Form extends React.Component {
 								<DialogTitle id="alert-dialog-title">{'Thank You!'}</DialogTitle>
 								<DialogContent>
 									<DialogContentText id="alert-dialog-description">
-									A email will be sent to {this.state.email} in a short minute confirming your
-									interest in hiring us. We will reach out to you in a few days at the cell
-									you provided at {this.state.phone} to gain further information. Thank you for hiring us for your
-									cleaning needs and we will be in touch!
+										A email will be sent to {this.state.email} in a short minute confirming your
+                    interest in hiring us. We will reach out to you in a few days at the cell
+										you provided at {this.state.phone} to gain further information. Thank you for hiring us for your
+										cleaning needs and we will be in touch!
 									</DialogContentText>
 								</DialogContent>
 								<DialogActions>
 									<Button onClick={this.handleClose} color="primary" autoFocus>
-									Close
+										Close
 									</Button>
 								</DialogActions>
 							</Dialog>
