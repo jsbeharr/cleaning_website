@@ -15,6 +15,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import axios from 'axios';
 
 const styles = theme => ({
 	textField: {
@@ -83,29 +84,16 @@ class Form extends React.Component {
 		// Checks all required variables are filled
 		if (companyname !== '' && email !== '' && phone[12] !== ' ' &&
 			address1 !== '' && city !== '' && zip !== '') {
-			fetch('/api/client', {
-				method: 'POST',
-				headers: {
-					'Accept': 'application/json',
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					company: companyname,
-					email: email,
-					phone: phone,
-					address1: address1,
-					address2: address2,
-					city: city,
-					zipcode: zip
-				})
+			axios.post('/api/client', {
+				company: companyname,
+				email: email,
+				phone: phone,
+				address1: address1,
+				address2: address2,
+				city: city,
+				zipcode: zip
 			})
-				.then(res => {
-					if (!res.ok) {
-						throw res.statusText;
-					}
-					return res;
-				})
-				.then(res => this.setState({ open: true }))
+				.then(() => this.setState({ open: true }))
 				.catch(error => alert(error));
 		}
 	}
