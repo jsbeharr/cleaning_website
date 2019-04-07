@@ -1,9 +1,11 @@
 import express from 'express';
+import session from 'express-session';
 import router from './route';
 import bodyParser from 'body-parser';
 import pino from 'express-pino-logger';
 
 const app = express();
+app.use(session({secret: 'My secret key'}));
 app.use(bodyParser.json());
 app.use(pino());
 

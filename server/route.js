@@ -45,20 +45,16 @@ router.get('/client', (req, res) => {
 
 // Get all clients
 // GET
-router.get('/clients', (req, res) => {
-	User.authenticate(req.query.username, req.query.password, (error, user) => {
-		if (error || !user) {
-			return res.status(400).send('Wrong Username or Password');
-		} else {
-			ClientModel.find()
-				.then(doc => {
-					res.json(doc);
-				})
-				.catch(err => {
-					res.status(500).json(err);
-				});
-		}
-	});
+router.get('/clients', checkSignIn, (req, res) => {
+	console.log('you are logged in');
+	ClientModel.find()
+		.then(doc => {
+			res.json(doc);
+		})
+		.catch(err => {
+			res.status(500).json(err);
+		});
+		
 });
 
 //register: storing name, email and password and redirecting to home page after signup
@@ -79,5 +75,32 @@ router.post('/register', (req, res) => {
 			res.status(500).json(err);
 		});
 });
+
+router.post('/login', (req, res) => {
+	if (!req.query.username || !req.query.password) {
+		return res.render('login', {message: 'Please enter username and password'});
+	} 
+	User.authenticate(req.query.username, req.query.password, (error, user) => {
+		if (error || !user) {
+			return res.status(400).send('Wrong Username or Password');
+		} else {
+			req.session.user = user;
+			res.status(200).send('Congrats Your are logged in');
+		}
+	});
+});
+
+router.get('/logout', (req, res) => {
+	req.session.destroy(() => {
+		res.send('User logged out');
+	});
+});
+
+function checkSignIn(req, res, next){
+	if (!req.session.user) {
+		res.send('You are not authorized to view this');
+	}
+	next();
+}
 
 export default router;
