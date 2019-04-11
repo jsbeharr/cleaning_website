@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-mongoose.connect('mongodb://localhost:27017/exlclean');
+mongoose.connect('mongodb://localhost:27017/exlclean', {
+	useNewUrlParser: true
+});
+mongoose.set('useCreateIndex', true);
+
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -40,5 +44,5 @@ UserSchema.pre('save', function (next) {
 	});
 });
 
-const User = mongoose.model('user', UserSchema);
+const User = mongoose.model('User', UserSchema);
 export default User;

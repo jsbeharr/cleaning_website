@@ -1,7 +1,6 @@
 import ClientModel from './models/client';
 import UserModel from './models/user';
 import express from 'express';
-import User from './models/user';
 const router = express.Router();
 
 // Create a new customer
@@ -46,7 +45,6 @@ router.get('/client', (req, res) => {
 // Get all clients
 // GET
 router.get('/clients', checkSignIn, (req, res) => {
-	console.log('you are logged in');
 	ClientModel.find()
 		.then(doc => {
 			res.json(doc);
@@ -80,7 +78,7 @@ router.post('/login', (req, res) => {
 	if (!req.query.username || !req.query.password) {
 		return res.render('login', {message: 'Please enter username and password'});
 	} 
-	User.authenticate(req.query.username, req.query.password, (error, user) => {
+	UserModel.authenticate(req.query.username, req.query.password, (error, user) => {
 		if (error || !user) {
 			return res.status(400).send('Wrong Username or Password');
 		} else {
@@ -99,8 +97,9 @@ router.get('/logout', (req, res) => {
 function checkSignIn(req, res, next){
 	if (!req.session.user) {
 		res.send('You are not authorized to view this');
+	} else {
+		next();
 	}
-	next();
 }
 
 export default router;

@@ -5,7 +5,11 @@ import bodyParser from 'body-parser';
 import pino from 'express-pino-logger';
 
 const app = express();
-app.use(session({secret: 'My secret key'}));
+app.use(session({
+	secret: 'My secret key',
+	resave: false,
+	saveUninitialized: false
+}));
 app.use(bodyParser.json());
 app.use(pino());
 
