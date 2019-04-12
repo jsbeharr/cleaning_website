@@ -3,6 +3,7 @@ import session from 'express-session';
 import router from './route';
 import bodyParser from 'body-parser';
 import pino from 'express-pino-logger';
+require('./db');
 
 const app = express();
 app.use(session({
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 app.use(pino());
 
 app.use((req, res, next) => {
+	// eslint-disable-next-line no-console
 	console.log(`${new Date().toString()} => ${req.originalUrl}`, req.body);
 	next();
 });
@@ -31,4 +33,5 @@ app.use((err, req, res) => {
 	res.status(500).send('Woops look like we really messed up');
 });
 
+// eslint-disable-next-line no-console
 app.listen(3001, () => console.info('Server has started on 3001'));

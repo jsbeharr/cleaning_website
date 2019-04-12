@@ -1,9 +1,4 @@
 import mongoose from 'mongoose';
-mongoose.connect('mongodb://localhost:27017/exlclean', {
-	useNewUrlParser: true
-});
-mongoose.set('useCreateIndex', true);
-
 const Schema = mongoose.Schema;
 
 const ClientSchema = new Schema({

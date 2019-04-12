@@ -1,9 +1,5 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-mongoose.connect('mongodb://localhost:27017/exlclean', {
-	useNewUrlParser: true
-});
-mongoose.set('useCreateIndex', true);
 
 const Schema = mongoose.Schema;
 
