@@ -2,8 +2,7 @@ module.exports = {
     "env": {
         "browser": true,
         "es6": true,
-        "jasmine": true,
-        "amd": true
+        "jasmine": true
     },
     "extends": [
         "eslint:recommended",

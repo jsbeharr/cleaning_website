@@ -1,18 +1,24 @@
-const express = require('express');
-const app = express();
-const clientRoute = require('./client');
-const bodyParser = require('body-parser');
-const pino = require('express-pino-logger')();
+import express from 'express';
+import session from 'express-session';
+import router from './route';
+import bodyParser from 'body-parser';
+import pino from 'express-pino-logger';
 
+const app = express();
+app.use(session({
+	secret: 'My secret key',
+	resave: false,
+	saveUninitialized: false
+}));
 app.use(bodyParser.json());
-app.use(pino);
+app.use(pino());
 
 app.use((req, res, next) => {
 	console.log(`${new Date().toString()} => ${req.originalUrl}`, req.body);
 	next();
 });
 
-app.use(clientRoute);
+app.use('/api', router);
 app.use(express.static('public'));
 
 // Handler for 404 - Resource Not Found

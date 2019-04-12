@@ -1,8 +1,12 @@
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/exlclean');
+import mongoose from 'mongoose';
+mongoose.connect('mongodb://localhost:27017/exlclean', {
+	useNewUrlParser: true
+});
+mongoose.set('useCreateIndex', true);
+
 const Schema = mongoose.Schema;
 
-const ClientModel = new Schema({
+const ClientSchema = new Schema({
 	company: {type: String, required: true},
 	email: {type: String, required: true},
 	phone: {type: String, required: true},
@@ -13,5 +17,4 @@ const ClientModel = new Schema({
 	date: {type: Date, default: Date.now}
 });
 
-// eslint-disable-next-line no-undef
-module.exports = mongoose.model('clients', ClientModel);
+export default mongoose.model('Client', ClientSchema);

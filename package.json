@@ -5,8 +5,10 @@
   "dependencies": {
     "@material-ui/core": "^1.5.0",
     "axios": "^0.18.0",
+    "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "mongoose": "^5.4.17",
     "react": "16.7.0-alpha.0",
     "react-dom": "16.7.0-alpha.0",
@@ -19,11 +21,15 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "server": "node-env-run server --exec nodemon | pino-colada",
+    "server": "node-env-run server --exec 'nodemon --exec babel-node --presets babel-preset-env' | pino-colada",
     "dev": "run-p server start"
   },
   "proxy": "http://localhost:3001/",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
     "eslint": "^5.3.0",
     "eslint-plugin-react": "^7.10.0",
     "express-pino-logger": "^4.0.0",
