@@ -7,7 +7,7 @@ const router = express.Router();
 // POST takes json data
 router.post('/client', (req, res) => {
 	if(!req.body) {
-		return res.status(400).send('Request body is missing');
+		return res.status(400).send({error: 'Request body is missing'});
 	}
 
 	let model = new ClientModel(req.body);
@@ -28,7 +28,7 @@ router.post('/client', (req, res) => {
 // GET takes in a company name
 router.get('/client', (req, res) => {
 	if(!req.query.company) {
-		return res.status(400).send('Missing URL parameter: company');
+		return res.status(400).send({error :'Missing URL parameter: company'});
 	}
 
 	ClientModel.findOne({
@@ -76,11 +76,11 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
 	if (!req.query.username || !req.query.password) {
-		return res.render('login', {message: 'Please enter username and password'});
+		return res.status(400).send({error: 'Missing username or password'});
 	} 
 	UserModel.authenticate(req.query.username, req.query.password, (error, user) => {
 		if (error || !user) {
-			return res.status(400).send('Wrong Username or Password');
+			return res.status(400).send({error: 'Wrong Username or Password'});
 		} else {
 			req.session.user = user;
 			res.status(200).send('Congrats Your are logged in');
@@ -90,13 +90,13 @@ router.post('/login', (req, res) => {
 
 router.get('/logout', (req, res) => {
 	req.session.destroy(() => {
-		res.send('User logged out');
+		res.send({message: 'User logged out'});
 	});
 });
 
 function checkSignIn(req, res, next){
 	if (!req.session.user) {
-		res.send('You are not authorized to view this');
+		res.status(401).send({error: 'You are not authorized to see this'});
 	} else {
 		next();
 	}

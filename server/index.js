@@ -25,12 +25,12 @@ app.use(express.static('public'));
 
 // Handler for 404 - Resource Not Found
 app.use((req, res) => {
-	res.status(404).send('We think you are lost!');
+	res.status(404).send({error: 'Not Found'});
 });
 
 // Handler for Error 500
 app.use((err, req, res) => {
-	res.status(500).send('Woops look like we really messed up');
+	res.status(500).send({error: 'Sorry mistake on our part'});
 });
 
 // eslint-disable-next-line no-console
