@@ -3,6 +3,8 @@ import session from 'express-session';
 import router from './route';
 import bodyParser from 'body-parser';
 import pino from 'express-pino-logger';
+import dotenv from 'dotenv';
+dotenv.config();
 require('./db');
 
 const app = express();
