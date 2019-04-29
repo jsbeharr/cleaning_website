@@ -1,6 +1,7 @@
 import ClientModel from './models/client';
 import UserModel from './models/user';
 import express from 'express';
+import nodemailer from 'nodemailer';
 const router = express.Router();
 
 // Create a new customer
@@ -16,6 +17,27 @@ router.post('/client', (req, res) => {
 			if(!doc || doc.length === 0) {
 				return res.status(500).send(doc);
 			}
+
+			const transporter = nodemailer.createTransport({
+				service: 'gmail',
+				auth: {
+					user: process.env.EMAIL,
+					pass: process.env.EMAIL_PASS
+				}
+			});
+
+			const mailOptions = {
+				from: process.env.EMAIL,
+				to: req.body.email,
+				subject: 'Thank you for selecting our service',
+				text: 'Email content'
+			};
+
+			transporter.sendMail(mailOptions, error => {
+				if (error) {
+					return res.status(500).send({error: 'sending email'});
+				} 
+			});
 
 			res.status(201).send(doc);
 		})
