@@ -4,8 +4,8 @@ import router from './route';
 import bodyParser from 'body-parser';
 import pino from 'express-pino-logger';
 import dotenv from 'dotenv';
+import './db';
 dotenv.config();
-require('./db');
 
 const app = express();
 app.use(session({
