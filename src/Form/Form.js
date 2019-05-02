@@ -40,6 +40,32 @@ const theme = createMuiTheme({
 	}
 });
 
+const FormDialog = props => {
+	return (
+		<Dialog
+			open={props.open}
+			onClose={props.handleClose}
+			aria-labelledby="alert-dialog-title"
+			aria-describedby="alert-dialog-description"
+		>
+			<DialogTitle id="alert-dialog-title">{'Thank You!'}</DialogTitle>
+			<DialogContent>
+				<DialogContentText id="alert-dialog-description">
+					A email will be sent to {props.email} in a short minute confirming your
+					interest in hiring us. We will reach out to you in a few days at the cell
+					you provided at {props.phone} to gain further information. Thank you for hiring us for your
+					cleaning needs and we will be in touch!
+				</DialogContentText>
+			</DialogContent>
+			<DialogActions>
+				<Button onClick={props.handleClose} color="primary" autoFocus>
+					Close
+				</Button>
+			</DialogActions>
+		</Dialog>
+	);
+};
+
 class Form extends React.Component {
 
 	constructor(props) {
@@ -223,27 +249,11 @@ class Form extends React.Component {
 								type="submit">
 								Submit
 							</Button>
-							<Dialog
-								open={this.state.open}
-								onClose={this.handleClose}
-								aria-labelledby="alert-dialog-title"
-								aria-describedby="alert-dialog-description"
-							>
-								<DialogTitle id="alert-dialog-title">{'Thank You!'}</DialogTitle>
-								<DialogContent>
-									<DialogContentText id="alert-dialog-description">
-										A email will be sent to {this.state.email} in a short minute confirming your
-                    interest in hiring us. We will reach out to you in a few days at the cell
-										you provided at {this.state.phone} to gain further information. Thank you for hiring us for your
-										cleaning needs and we will be in touch!
-									</DialogContentText>
-								</DialogContent>
-								<DialogActions>
-									<Button onClick={this.handleClose} color="primary" autoFocus>
-										Close
-									</Button>
-								</DialogActions>
-							</Dialog>
+							<FormDialog 
+								open={this.state.open} 
+								handleClose={this.handleClose} 
+								email={this.state.email} 
+								phone={this.state.phone}  />
 						</ValidatorForm>
 					</MuiThemeProvider>
 				</Paper>
@@ -251,6 +261,13 @@ class Form extends React.Component {
 		);
 	}
 }
+
+FormDialog.propTypes = {
+	open: PropTypes.bool.isRequired,
+	handleClose: PropTypes.func.isRequired,
+	email: PropTypes.string.isRequired,
+	phone: PropTypes.string.isRequired
+};
 
 Form.propTypes = {
 	classes: PropTypes.object.isRequired
