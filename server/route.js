@@ -29,13 +29,16 @@ router.post('/client', (req, res) => {
 			const mailOptions = {
 				from: process.env.EMAIL,
 				to: req.body.email,
-				subject: 'Thank you for selecting our service',
-				text: 'Email content'
+				subject: 'Excellent Cleaning Confirmation',
+				text: 'Thank you for selecting our cleaning service ' + req.body.company + ', we have' +
+							' been notified about your request to clean your office at ' + req.body.address1 +
+							' will contact you via email or phone for further information. Thanks, and we hope we' +
+							' can give you office an excellent clean\n\nExcellent Cleaning'
 			};
 
 			transporter.sendMail(mailOptions, error => {
 				if (error) {
-					return res.status(500).send({error: 'sending email'});
+					return res.status(500).send({error: 'An error occured sending the email'});
 				} 
 			});
 
