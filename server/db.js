@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
 
 // Create the database connection 
-const dbURI = 'mongodb://localhost:27017/exlclean';
-mongoose.connect(dbURI, {
+mongoose.connect(process.env.DB_URI, {
 	useNewUrlParser: true
 });
 mongoose.set('useCreateIndex', true); 
@@ -10,7 +9,7 @@ mongoose.set('useCreateIndex', true);
 // CONNECTION EVENTS
 // When successfully connected
 mongoose.connection.on('connected',() => {  
-	console.log('Mongoose connection open to ' + dbURI);
+	console.log('Mongoose connection open to ' + process.env.DB_URI);
 }); 
 
 // If the connection throws an error
