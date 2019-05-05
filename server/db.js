@@ -9,7 +9,7 @@ mongoose.set('useCreateIndex', true);
 // CONNECTION EVENTS
 // When successfully connected
 mongoose.connection.on('connected',() => {  
-	console.log('Mongoose connection open to ' + process.env.DB_URI);
+	console.log('Mongoose connection open');
 }); 
 
 // If the connection throws an error
