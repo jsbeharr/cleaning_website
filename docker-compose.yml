@@ -1,11 +1,6 @@
 version: '3'
 services:
   webserver:
-    image: nginx:1.15.2-alpine
-    links:
-      - frontend
-    volumes:
-      - ./build:/var/www/
-      - ./nginx.conf:/etc/nginx/nginx.conf
+    build: .
     ports:
       - "80:80"

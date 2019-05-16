@@ -36,4 +36,4 @@ app.use((err, req, res) => {
 });
 
 // eslint-disable-next-line no-console
-app.listen(3001, () => console.info('Server has started on 3001'));
+app.listen(3000, () => console.info('Server has started on 3000'));
