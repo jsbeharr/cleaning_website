@@ -1,6 +1,18 @@
-version: '3'
+version: "3"
 services:
   webserver:
-    build: .
+    build: ./client
     ports:
       - "80:80"
+  restapi:
+    build: ./server
+    ports: 
+      - "3000:3000"
+  # mongodb:
+  #   image: "mongo:4.0.6"
+  #   ports: 
+  #     - "27017:27017"
+  #   environment:
+  #     - MONGO_DATA_DIR=/data/db
+  #   volumes:
+  #     - "~/databases:/data/db"
