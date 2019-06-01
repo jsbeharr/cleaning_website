@@ -1,0 +1,31 @@
+.banner-content {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-tagline {
+  margin: 16px;
+  text-align: center;
+  font-size: 2.5em;
+  color: #FFFFFF;
+  border-radius: 25px;
+  padding: .5em;
+  background: rgb(0, 0, 0, 0.5);
+}
+
+.contact {
+  font-size: .75em;
+  display: inline-block;
+  border: solid 4px #FFFFFF;
+  margin-top: 1.2em;
+  padding: 4px 40px;
+}
+
+@media only screen and (max-width: 500px)   {
+  .contact p {
+    font-size: .35em
+  }
+}
