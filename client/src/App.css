@@ -28,7 +28,7 @@
   display: block;
   position: absolute;
   width: 100%;
-	background: rgb(0, 0, 0, 0.5);
+	background: #1e2227;
 }
 
 .banner-header p {
@@ -52,6 +52,14 @@
 	margin-right: 2em;
 }
 
+.banner-content {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
 svg {
   display: none;
 }
@@ -65,7 +73,7 @@ svg {
     display: inline-block;
   }
 } */
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 800px) {
   #title, #hire-button,#topnav a, #topnav p {
     display: none; 
   }
@@ -74,7 +82,7 @@ svg {
   } */
   #topnav {
     width: 100%;
-    padding-top: 1.5em;
+    padding-top: 1em;
     padding-bottom: .5em;
   }
   #topnav svg {

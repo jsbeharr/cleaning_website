@@ -1,13 +1,6 @@
-.banner-content {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
 .banner-tagline {
   margin: 16px;
+  margin-top: 2em;
   text-align: center;
   font-size: 2.5em;
   color: #FFFFFF;
@@ -20,7 +13,7 @@
   font-size: .75em;
   display: inline-block;
   border: solid 4px #FFFFFF;
-  margin-top: 1.2em;
+  margin-top: 1em;
   padding: 4px 40px;
 }
 

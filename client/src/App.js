@@ -25,7 +25,7 @@ class App extends Component {
 								<Link to='/about'>About Us</Link>
 								<Link to='/service'>Our Service</Link>
 								<Link to='/contact'>Contact</Link>
-								<FaAlignJustify onClick={this.toggleResponsiveMenu} size='2em' style={{color: 'white'}} />
+								<FaAlignJustify onClick={this.toggleResponsiveMenu} size='1.5em' style={{color: 'white'}} />
 							</navigation>
 							<p
 								id='hire-button'
