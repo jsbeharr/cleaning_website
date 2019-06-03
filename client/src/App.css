@@ -3,6 +3,7 @@
   border-radius: .5em;
   user-select: none;
   background: #2196f3;
+  transition: 500ms
 }
 
 #hire-button:hover {
@@ -15,12 +16,22 @@
   background: #000000;
 }
 
+.nav-button, #topnav a {
+  color: #FFFFFF;
+  transition: 500ms
+}
+
+.nav-button:hover, #topnav a:hover {
+  color: #2196f3;
+}
+
 .banner {
   background-image: url('./assets/detroit-banner.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 100vh;
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100)
 }
 
 .banner-header {
@@ -45,7 +56,7 @@
 	text-align: center;
 }
 
-.banner-header a {
+#topnav a {
 	color: #FFFFFF;
 	display: inline;
 	text-decoration: none;
@@ -64,16 +75,7 @@ svg {
   display: none;
 }
 
-/* @media only screen and (max-width: 800px)   {
-  .banner-header {
-    display: none;
-  }
-
-  svg {
-    display: inline-block;
-  }
-} */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1140px) {
   #title, #hire-button,#topnav a, #topnav p {
     display: none; 
   }

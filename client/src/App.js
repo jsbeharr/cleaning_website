@@ -3,7 +3,6 @@ import Form from './Form/Form';
 import Home from './Home/Home';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { FaAlignJustify } from 'react-icons/fa';
-
 import './App.css';
 
 class App extends Component {
@@ -14,6 +13,13 @@ class App extends Component {
 	}
 
 	render() {
+		// We listen to the resize event
+		window.addEventListener('resize', () => {
+			// We execute the same script as before
+			let vh = window.innerHeight * 0.01;
+			document.documentElement.style.setProperty('--vh', `${vh}px`);
+		});
+
 		return (
 			<div className='App'>
 				<Router>
@@ -25,7 +31,7 @@ class App extends Component {
 								<Link to='/about'>About Us</Link>
 								<Link to='/service'>Our Service</Link>
 								<Link to='/contact'>Contact</Link>
-								<FaAlignJustify onClick={this.toggleResponsiveMenu} size='1.5em' style={{color: 'white'}} />
+								<FaAlignJustify className='nav-button' onClick={this.toggleResponsiveMenu} size='1.5em'  />
 							</navigation>
 							<p
 								id='hire-button'
