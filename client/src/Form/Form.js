@@ -15,6 +15,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import axios from 'axios';
 
 const styles = theme => ({
@@ -36,7 +37,8 @@ const styles = theme => ({
 
 const theme = createMuiTheme({
 	palette: {
-		primary: blue
+		primary: blue,
+		type: 'dark',
 	}
 });
 
@@ -145,11 +147,12 @@ class Form extends React.Component {
 
 		return (
 			<div className='Form'>
-				<Paper className={classes.paper} elevation={8}>
-					<MuiThemeProvider theme={theme}>
+				<MuiThemeProvider theme={theme}>
+					<CssBaseline />
+					<Paper className={classes.paper} elevation={8}>
 						<ValidatorForm
 							onSubmit={this.handleSubmit}>
-							<p>Fill out form if interested in hiring</p>
+							<p style={{color: 'white'}}>Fill out form if interested in hiring</p>
 							<TextValidator
 								className={classes.textField}
 								id='companyname'
@@ -255,8 +258,8 @@ class Form extends React.Component {
 								email={this.state.email} 
 								phone={this.state.phone}  />
 						</ValidatorForm>
-					</MuiThemeProvider>
-				</Paper>
+					</Paper>
+				</MuiThemeProvider>
 			</div>
 		);
 	}
