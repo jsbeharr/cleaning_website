@@ -39,13 +39,61 @@
   color: #FFFFFF;
 }
 
-a {
-	text-decoration: none;
-	left-margin: 2px;
+.banner-header navigation {
+	display: inline-block;
+	width: 60%;
+	text-align: center;
 }
 
-@media only screen and (max-width: 500px)   {
+.banner-header a {
+	color: #FFFFFF;
+	display: inline;
+	text-decoration: none;
+	margin-right: 2em;
+}
+
+svg {
+  display: none;
+}
+
+/* @media only screen and (max-width: 800px)   {
   .banner-header {
     display: none;
   }
+
+  svg {
+    display: inline-block;
+  }
+} */
+@media screen and (max-width: 850px) {
+  #title, #hire-button,#topnav a, #topnav p {
+    display: none; 
+  }
+  /* .banner-header{
+    background: none;
+  } */
+  #topnav {
+    width: 100%;
+    padding-top: 1.5em;
+    padding-bottom: .5em;
+  }
+  #topnav svg {
+    float: right;
+    display: block;
+    margin-right: 1.5em;
+  }
+  #topnav.responsive {
+    position: relative; 
+  }
+  #topnav.responsive svg {
+    position: absolute; 
+    right: 0;
+    top: 1.5em;
+  }
+  #topnav.responsive a {
+    margin: 2em;
+    float: none;
+    display: block;
+    text-align: left; 
+  } 
 }
