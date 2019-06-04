@@ -94,6 +94,7 @@ svg {
     float: right;
     display: block;
     margin-right: 1.5em;
+    cursor: pointer;
   }
   #topnav.responsive {
     position: relative; 
