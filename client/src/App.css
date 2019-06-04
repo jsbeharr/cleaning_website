@@ -59,7 +59,8 @@
 #topnav a {
 	color: #FFFFFF;
 	display: inline;
-	text-decoration: none;
+  text-decoration: none;
+  outline: none;
 	margin-right: 2em;
 }
 
