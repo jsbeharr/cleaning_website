@@ -75,13 +75,10 @@ svg {
   display: none;
 }
 
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 1145px) {
   #title, #hire-button,#topnav a, #topnav p {
     display: none; 
   }
-  /* .banner-header{
-    background: none;
-  } */
   #topnav {
     width: 100%;
     padding-top: 1em;

@@ -19,6 +19,15 @@
 
 @media only screen and (max-width: 800px)   {
   .contact p {
-    font-size: .35em
+    font-size: .55em
+  }
+}
+
+@media only screen and (max-width: 450px)   {
+  .banner-tagline {
+    font-size: 1.75em;
+  }
+  .contact p {
+    font-size: .5em
   }
 }
