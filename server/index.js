@@ -3,9 +3,7 @@ import session from 'express-session';
 import router from './route';
 import bodyParser from 'body-parser';
 import pino from 'express-pino-logger';
-import dotenv from 'dotenv';
 import './db';
-dotenv.config();
 
 const app = express();
 app.use(session({
