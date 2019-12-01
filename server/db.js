@@ -4,9 +4,10 @@ dotenv.config();
 
 // Create the database connection 
 mongoose.connect(process.env.DB_URI, {
-	useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
-mongoose.set('useCreateIndex', true); 
+mongoose.set('useCreateIndex', true);
 
 // CONNECTION EVENTS
 // When successfully connected

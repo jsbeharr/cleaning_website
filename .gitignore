@@ -9,6 +9,9 @@ node_modules/
 # production
 /build
 
+# visual studio ide settings
+.vs/
+
 # misc
 .DS_Store
 .env
