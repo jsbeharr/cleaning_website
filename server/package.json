@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "^0.18.1",
     "babel-eslint": "^10.0.1",
-    "bcrypt": "^3.0.4",
+    "bcrypt": "^3.0.7",
     "body-parser": "^1.18.3",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
@@ -14,14 +14,13 @@
     "nodemailer": "^6.1.1"
   },
   "scripts": {
-    "server": "node-env-run index.js --exec 'nodemon --exec babel-node --presets babel-preset-env' | pino-colada",
-    "dev": "run-p server start"
+    "server": "nodemon --exec babel-node index.js | pino-colada",
+    "dev": "run-p server"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.5",
-    "babel-preset-env": "^1.7.0",
+    "@babel/core": "^7.7.4",
+    "@babel/node": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
     "eslint": "^5.3.0",
     "eslint-plugin-react": "^7.10.0",
     "express-pino-logger": "^4.0.0",
